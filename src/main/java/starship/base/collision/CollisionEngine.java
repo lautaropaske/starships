@@ -1,4 +1,4 @@
-package edu.austral.starship.base.collision;
+package starship.base.collision;
 
 import java.awt.*;
 import java.awt.geom.Area;

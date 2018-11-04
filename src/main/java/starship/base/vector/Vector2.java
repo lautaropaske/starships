@@ -1,11 +1,11 @@
-package edu.austral.starship.base.vector;
+package starship.base.vector;
 
 import static java.lang.Math.*;
 
 public class Vector2 {
     private final float x;
-    private final float y;
 
+    private final float y;
     private Vector2(float x, float y) {
         this.x = x;
         this.y = y;
@@ -34,5 +34,13 @@ public class Vector2 {
 
     public static Vector2 vectorFromModule(float module, float angle) {
         return new Vector2((float) (module * cos(angle)), (float) (module * sin(angle)));
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
     }
 }

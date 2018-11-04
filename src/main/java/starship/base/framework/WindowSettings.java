@@ -1,4 +1,4 @@
-package edu.austral.starship.base.framework;
+package starship.base.framework;
 
 import processing.core.PApplet;
 

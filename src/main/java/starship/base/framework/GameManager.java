@@ -1,6 +1,6 @@
-package edu.austral.starship.base.framework;
+package starship.base.framework;
 
-import edu.austral.starship.CustomGameFramework;
+import starship.CustomGameFramework;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 
@@ -17,20 +17,17 @@ public class GameManager extends PApplet {
 
     public void draw() {
         clear();
-
         final float timeSinceLastFrame = (frameRate / 60) * 100;
         gameFramework.draw(g, timeSinceLastFrame, keySet);
     }
 
     public void keyPressed(KeyEvent event) {
         keySet.add(event.getKeyCode());
-
         gameFramework.keyPressed(event);
     }
 
     public void keyReleased(KeyEvent event) {
         keySet.remove(event.getKeyCode());
-
         gameFramework.keyReleased(event);
     }
 }
