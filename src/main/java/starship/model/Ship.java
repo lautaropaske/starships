@@ -2,8 +2,17 @@ package starship.model;
 
 import starship.base.vector.Vector2;
 
+import java.awt.*;
+
 public class Ship extends Solid{
 
+    public Ship(Vector2 position){
+        this.position = position;
+        this.size = 30;
+        this.heading = 0;
+        this.velocity = Vector2.vector(0,5);
+        this.shape = new Polygon();
+    }
 
 
     @Override
@@ -17,12 +26,12 @@ public class Ship extends Solid{
     }
 
     public void addPosition(Vector2 position) {
-        this.position.add(position);
+        this.position = this.position.add(position);
         notifyObservers();
     }
 
     public void rotatePosition(float angle) {
-        this.position.rotate(angle);
+        this.heading += angle;
         notifyObservers();
     }
 }

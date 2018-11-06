@@ -6,8 +6,12 @@ import starship.base.vector.Vector2;
 import java.awt.*;
 
 public abstract class Solid extends Observable<Solid> implements Collisionable<Solid> {
-    protected Shape shape;
-    protected Vector2 position;
+    Shape shape;
+    Vector2 position;
+    Vector2 velocity;
+    int size;
+    float heading;
+
 
     @Override
     public Shape getShape(){ return shape;}
@@ -16,5 +20,15 @@ public abstract class Solid extends Observable<Solid> implements Collisionable<S
         return position;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public float getHeading() {
+        return heading;
+    }
+
     protected abstract void collide(Ship ship);
+
+    public Vector2 getVelocity(){return velocity;}
 }

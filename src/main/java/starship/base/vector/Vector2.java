@@ -4,8 +4,8 @@ import static java.lang.Math.*;
 
 public class Vector2 {
     private final float x;
-
     private final float y;
+
     private Vector2(float x, float y) {
         this.x = x;
         this.y = y;

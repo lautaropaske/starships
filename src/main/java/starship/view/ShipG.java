@@ -5,11 +5,17 @@ import starship.model.Observable;
 import starship.model.Solid;
 
 public class ShipG extends SolidG{
-    int r = 10;
-
+    
     @Override
     public void drawSelf(PGraphics p) {
-        p.rect(r,r,r,r);
+        p.translate(lastState.getPosition().getX(), lastState.getPosition().getY());
+        p.rotate(lastState.getHeading());
+        p.beginShape();
+        p.vertex(0, 0);
+        p.vertex(lastState.getSize()*0.5f, lastState.getSize());
+        p.vertex(lastState.getSize(), 0);
+        p.vertex(lastState.getSize()*0.5f, lastState.getSize()*0.33f);
+        p.endShape();
     }
 
     @Override

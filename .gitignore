@@ -119,7 +119,7 @@ application.windows64
 application.macosx
 
 ### Gradle ###
-.gradle
+.gradle/
 /build/
 
 # Ignore Gradle GUI config

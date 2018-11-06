@@ -1,9 +1,7 @@
 package starship.controller.model;
 
-import processing.event.KeyEvent;
 import starship.controller.model.commands.Command;
 
-import java.util.List;
 import java.util.Set;
 
 public class ShipCommands {
