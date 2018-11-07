@@ -3,33 +3,43 @@ package starship.controller.main;
 import starship.controller.model.ShipCommands;
 import starship.controller.model.ShipController;
 import starship.controller.model.commands.*;
+import starship.model.Player;
 import starship.model.Ship;
-import starship.model.factory.PlayerFactory;
-import starship.model.factory.ShipFactory;
+import starship.model.factories.AsteroidFactory;
+import starship.model.factories.PlayerFactory;
+import starship.model.factories.ShipFactory;
 
 import java.awt.event.KeyEvent;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 public class Game {
-    private ShipFactory shipFactory;
-    private PlayerFactory playerFactory;
+    private final AsteroidFactory asteroidFactory;
+    private final ShipFactory shipFactory;
+    private final PlayerFactory playerFactory;
 
-    public Game(ShipFactory shipFactory, PlayerFactory playerFactory){
+    public Game(ShipFactory shipFactory, PlayerFactory playerFactory, AsteroidFactory asteroidFactory){
         this.shipFactory = shipFactory;
         this.playerFactory = playerFactory;
+        this.asteroidFactory = asteroidFactory;
     }
 
     public SetupResult setup(Set<String> names){
         SetupResult result = new SetupResult();
 
-        ShipCommands shipCommands = createShipCommand(shipFactory.createShip());
-
-        names.forEach(name -> playerFactory.createPlayer(name, shipCommands));
-
-        result.addShipCommand(shipCommands);
+        names.forEach(name -> {
+            Player player = playerFactory.createPlayer(name);
+            ShipCommands shipCommands = createShipCommand(shipFactory.createShip(player));
+            player.setCommands(shipCommands);
+            result.addShipCommand(shipCommands);
+        });
 
         return result;
+    }
+
+    public void spawnAsteroids(){
+        asteroidFactory.spawn(new Random().nextInt(1));
     }
 
     // TODO must read configuration from file and retrieve as many ShipCommand configurations as players supported

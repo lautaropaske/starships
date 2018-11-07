@@ -1,37 +1,45 @@
 package starship.model;
 
 import starship.base.vector.Vector2;
+import starship.model.gun.Gun;
+import starship.model.gun.SimpleGun;
+import starship.model.visitors.ShipVisitor;
+import starship.model.visitors.Visitor;
 
 import java.awt.*;
 
 public class Ship extends Solid{
 
-    public Ship(Vector2 position){
+    private Gun gun;
+    private Player owner;
+
+    public Ship(Player owner, Vector2 position){
+        this.hp = 100;
         this.position = position;
         this.size = 30;
         this.heading = 0;
         this.velocity = Vector2.vector(0,5);
         this.shape = new Polygon();
+        this.visitor = new ShipVisitor(this);
+        this.gun = new SimpleGun();
+        this.owner = owner;
     }
 
+    public void doDamage(int damage){
+        this.hp -= damage;
+    }
 
-    @Override
-    protected void collide(Ship ship) {
-        /*Game does not handle ship collisions*/
+    public void fireGun(){
+        this.gun.fireGun(owner, position);
     }
 
     @Override
     public void collisionedWith(Solid collisionable) {
-        collisionable.collide(this);
+        collisionable.accept(this.visitor);
     }
 
-    public void addPosition(Vector2 position) {
-        this.position = this.position.add(position);
-        notifyObservers();
-    }
-
-    public void rotatePosition(float angle) {
-        this.heading += angle;
-        notifyObservers();
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

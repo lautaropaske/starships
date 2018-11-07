@@ -1,4 +1,4 @@
-package starship.model.factory;
+package starship.model.factories;
 
 import starship.controller.main.GraphicManager;
 import starship.view.SolidG;

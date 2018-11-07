@@ -11,7 +11,7 @@ public class ShipController {
     }
 
     public void fireGun() {
-        /**/
+        ship.fireGun();
     }
 
     public void moveDown() {

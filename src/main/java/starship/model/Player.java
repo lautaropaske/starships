@@ -6,13 +6,16 @@ public class Player {
     private String name;
     private ShipCommands commands;
 
-    public Player(String name, ShipCommands commands) {
+    public Player(String name) {
         this.name = name;
-        this.commands = commands;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setCommands(ShipCommands commands) {
+        this.commands = commands;
     }
 
     public ShipCommands getCommands() {
