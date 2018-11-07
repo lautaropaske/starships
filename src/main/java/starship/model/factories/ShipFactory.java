@@ -11,8 +11,8 @@ public class ShipFactory extends GraphicFactory {
         super(observer);
     }
 
-    public Ship createShip(Player owner) {
-        Ship ship = new Ship(owner, Vector2.vector(400, 300));
+    public Ship createShip(Player owner, BulletFactory bf) {
+        Ship ship = new Ship(owner, Vector2.vector(400, 300), bf);
         ShipG shipG = new ShipG();
         ship.add(shipG);
         shipG.update(ship);

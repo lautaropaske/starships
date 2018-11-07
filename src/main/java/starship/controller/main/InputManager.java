@@ -14,7 +14,7 @@ public class InputManager {
         this.playersCommands = playersCommands;
     }
 
-    public void keyPressed(Set<Integer> keySet) {
+    public void keysPressed(Set<Integer> keySet) {
         playersCommands.forEach(pc -> keySet.forEach(pc::acceptKeyEvent));
     }
 }

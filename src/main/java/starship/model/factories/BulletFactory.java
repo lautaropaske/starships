@@ -13,9 +13,9 @@ public class BulletFactory extends GraphicFactory{
         super(observer);
     }
 
-    public void spawnSimpleBullet(Player player, Vector2 position){
+    public void spawnSimpleBullet(Player player, Vector2 position, float shipHeading){
         Bullet bullet = new SimpleBullet();
-        ShotBullet shot = new ShotBullet(bullet, player, position);
+        ShotBullet shot = new ShotBullet(bullet, player, position, shipHeading);
         BulletG bulletG = new BulletG();
         shot.add(bulletG);
         bulletG.update(shot);

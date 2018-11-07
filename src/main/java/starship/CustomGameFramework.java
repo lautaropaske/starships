@@ -25,11 +25,7 @@ public class CustomGameFramework implements GameFramework {
     public CustomGameFramework(){
         this.gm = new GraphicManager();
         this.spawnAsteroidsClock = 1000f;
-
-        ShipFactory shipFactory = new ShipFactory(this.gm);
-        AsteroidFactory asteroidFactory = new AsteroidFactory(this.gm);
-        PlayerFactory playerFactory = new PlayerFactory();
-        this.game = new Game(shipFactory, playerFactory, asteroidFactory);
+        this.game = new Game(gm);
     }
 
     @Override
@@ -59,7 +55,7 @@ public class CustomGameFramework implements GameFramework {
         }
 
         this.gm.draw(graphics);
-        this.im.keyPressed(keySet);
+        this.im.keysPressed(keySet);
     }
 
     @Override

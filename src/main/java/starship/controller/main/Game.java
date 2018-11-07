@@ -3,9 +3,11 @@ package starship.controller.main;
 import starship.controller.model.ShipCommands;
 import starship.controller.model.ShipController;
 import starship.controller.model.commands.*;
+import starship.model.Bullet;
 import starship.model.Player;
 import starship.model.Ship;
 import starship.model.factories.AsteroidFactory;
+import starship.model.factories.BulletFactory;
 import starship.model.factories.PlayerFactory;
 import starship.model.factories.ShipFactory;
 
@@ -18,19 +20,22 @@ public class Game {
     private final AsteroidFactory asteroidFactory;
     private final ShipFactory shipFactory;
     private final PlayerFactory playerFactory;
+    private final GraphicManager gm;
 
-    public Game(ShipFactory shipFactory, PlayerFactory playerFactory, AsteroidFactory asteroidFactory){
-        this.shipFactory = shipFactory;
-        this.playerFactory = playerFactory;
-        this.asteroidFactory = asteroidFactory;
+    public Game(GraphicManager gm){
+        this.shipFactory = new ShipFactory(gm);
+        this.asteroidFactory = new AsteroidFactory(gm);
+        this.playerFactory = new PlayerFactory();
+        this.gm = gm;
     }
 
     public SetupResult setup(Set<String> names){
         SetupResult result = new SetupResult();
 
         names.forEach(name -> {
+            // TODO Does this work properly? Made big changes, might have fucked up. Check why ship not moving
             Player player = playerFactory.createPlayer(name);
-            ShipCommands shipCommands = createShipCommand(shipFactory.createShip(player));
+            ShipCommands shipCommands = createShipCommand(shipFactory.createShip(player, new BulletFactory(gm)));
             player.setCommands(shipCommands);
             result.addShipCommand(shipCommands);
         });

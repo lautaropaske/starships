@@ -6,7 +6,7 @@ import starship.model.Player;
 public class DoubleFire implements Gun {
 
     @Override
-    public void fireGun(Player player, Vector2 position) {
+    public void fireGun(Player player, Vector2 position, float shipHeading) {
         /* TODO nothing yet*/
     }
 }

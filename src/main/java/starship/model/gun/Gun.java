@@ -4,5 +4,5 @@ import starship.base.vector.Vector2;
 import starship.model.Player;
 
 public interface Gun{
-    void fireGun(Player player, Vector2 position);
+    void fireGun(Player player, Vector2 position, float shipHeading);
 }
