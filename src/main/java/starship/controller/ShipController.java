@@ -1,4 +1,4 @@
-package starship.controller.model;
+package starship.controller;
 
 import starship.base.vector.Vector2;
 import starship.model.Ship;

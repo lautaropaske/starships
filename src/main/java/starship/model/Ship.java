@@ -20,7 +20,7 @@ public class Ship extends Solid{
         this.size = 30;
         this.heading = 0;
         this.velocity = Vector2.vector(0,5);
-        this.shape = new Polygon();
+        this.shape = new Rectangle(0,0, size, size);
         this.visitor = new ShipVisitor(this);
         this.gun = new SimpleGun(bulletFactory);
         this.owner = owner;

@@ -1,6 +1,6 @@
-package starship.controller.main;
+package starship.base.main;
 
-import starship.controller.model.ShipCommands;
+import starship.controller.ShipCommands;
 
 import java.util.HashSet;
 import java.util.Set;

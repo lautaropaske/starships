@@ -4,6 +4,8 @@ import starship.base.vector.Vector2;
 import starship.model.visitors.BulletVisitor;
 import starship.model.visitors.Visitor;
 
+import java.awt.*;
+
 public class ShotBullet extends Solid{
     private Bullet bullet;
     private Player player;
@@ -36,4 +38,7 @@ public class ShotBullet extends Solid{
         this.position = this.position.add(bullet.velocity.rotate(heading));
         return position;
     }
+
+    @Override
+    public Shape getShape(){return bullet.shape;}
 }

@@ -1,6 +1,6 @@
-package starship.controller.model;
+package starship.controller;
 
-import starship.controller.model.commands.Command;
+import starship.controller.commands.Command;
 
 import java.util.Set;
 

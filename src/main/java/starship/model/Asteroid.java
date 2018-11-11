@@ -16,7 +16,7 @@ public class Asteroid extends Solid{
         this.size = size;
         this.heading = new Random().nextFloat() * PConstants.TWO_PI;
         this.velocity = Vector2.vector(0,1);
-        this.shape = new Rectangle(this.size, this.size);
+        this.shape = new Rectangle(0,0, this.size, this.size);
         this.visitor = new AsteroidVisitor(this);
     }
 

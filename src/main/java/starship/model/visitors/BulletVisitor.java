@@ -7,7 +7,7 @@ import starship.model.ShotBullet;
 
 public class BulletVisitor implements Visitor {
 
-    Bullet bullet;
+    private Bullet bullet;
 
     public BulletVisitor(Bullet bullet){
         this.bullet = bullet;
@@ -25,6 +25,6 @@ public class BulletVisitor implements Visitor {
 
     @Override
     public void visit(ShotBullet bullet) {
-
+        System.out.println("Asteroid - Bullet hit");
     }
 }

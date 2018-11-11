@@ -24,6 +24,6 @@ public class AsteroidVisitor implements Visitor {
 
     @Override
     public void visit(ShotBullet bullet) {
-
+        System.out.println("Bullet - Asteroid hit");
     }
 }

@@ -1,6 +1,6 @@
 package starship.model;
 
-import starship.controller.model.ShipCommands;
+import starship.controller.ShipCommands;
 
 public class Player {
     private String name;

@@ -1,6 +1,6 @@
-package starship.controller.model.commands;
+package starship.controller.commands;
 
-import starship.controller.model.ShipController;
+import starship.controller.ShipController;
 
 public class MoveUpCommand extends Command {
 

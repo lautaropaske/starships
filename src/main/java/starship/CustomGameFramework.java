@@ -5,13 +5,10 @@ import starship.base.framework.ImageLoader;
 import starship.base.framework.WindowSettings;
 import processing.core.PGraphics;
 import processing.event.KeyEvent;
-import starship.controller.main.Game;
-import starship.controller.main.GraphicManager;
-import starship.controller.main.InputManager;
-import starship.controller.main.SetupResult;
-import starship.model.factories.AsteroidFactory;
-import starship.model.factories.PlayerFactory;
-import starship.model.factories.ShipFactory;
+import starship.base.main.Game;
+import starship.base.collision.GraphicManager;
+import starship.base.main.InputManager;
+import starship.base.main.SetupResult;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -45,7 +42,7 @@ public class CustomGameFramework implements GameFramework {
 
     @Override
     public void draw(PGraphics graphics, float timeSinceLastDraw, Set<Integer> keySet) {
-        graphics.background(0);
+        graphics.background(255,255,255);
 
         if(spawnAsteroidsClock >= 1500f){
             game.spawnAsteroids();

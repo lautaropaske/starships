@@ -1,7 +1,7 @@
 package starship.model.factories;
 
 import starship.base.vector.Vector2;
-import starship.controller.main.GraphicManager;
+import starship.base.collision.GraphicManager;
 import starship.model.Player;
 import starship.model.Ship;
 import starship.view.ShipG;

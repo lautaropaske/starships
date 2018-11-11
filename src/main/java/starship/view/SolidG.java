@@ -3,6 +3,8 @@ package starship.view;
 import processing.core.PGraphics;
 import starship.model.Solid;
 
+import java.awt.*;
+
 public abstract class SolidG implements Observer<Solid>{
     Solid lastState;
 
@@ -12,4 +14,8 @@ public abstract class SolidG implements Observer<Solid>{
     }
 
     public abstract void drawSelf(PGraphics p);
+
+    public Solid getLastState() {
+        return lastState;
+    }
 }
