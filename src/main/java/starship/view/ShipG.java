@@ -8,6 +8,11 @@ import starship.model.Solid;
 import java.awt.*;
 
 public class ShipG extends SolidG{
+
+    public ShipG(String pairID){
+        this.pairID = pairID;
+        this.clean = false;
+    }
     
     @Override
     public void drawSelf(PGraphics p) {

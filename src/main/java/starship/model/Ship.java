@@ -14,8 +14,9 @@ public class Ship extends Solid{
     private Gun gun;
     private Player owner;
 
-    public Ship(Player owner, Vector2 position, BulletFactory bulletFactory){
-        this.hp = 100;
+    public Ship(String pairID, Player owner, Vector2 position, BulletFactory bulletFactory){
+        this.pairID = pairID;
+        this.hp = 1000000000;
         this.position = position;
         this.size = 30;
         this.heading = 0;
@@ -24,10 +25,6 @@ public class Ship extends Solid{
         this.visitor = new ShipVisitor(this);
         this.gun = new SimpleGun(bulletFactory);
         this.owner = owner;
-    }
-
-    public void doDamage(int damage){
-        this.hp -= damage;
     }
 
     public void fireGun(){
@@ -42,5 +39,10 @@ public class Ship extends Solid{
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    void wentOutOfBounds() {
+        /*How do you make it reappear?*/
     }
 }

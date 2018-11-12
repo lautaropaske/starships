@@ -10,7 +10,8 @@ import java.util.Random;
 
 public class Asteroid extends Solid{
 
-    public Asteroid(int size, Vector2 position){
+    public Asteroid(String pairID, int size, Vector2 position){
+        this.pairID = pairID;
         this.hp = size;
         this.position = position;
         this.size = size;
@@ -28,6 +29,11 @@ public class Asteroid extends Solid{
     @Override
     void accept(Visitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    void wentOutOfBounds() {
+        hp = -1;
     }
 
     @Override

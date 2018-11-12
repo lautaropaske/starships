@@ -1,28 +1,28 @@
 package starship;
 
+import starship.base.collision.CollisionManager;
 import starship.base.framework.GameFramework;
 import starship.base.framework.ImageLoader;
 import starship.base.framework.WindowSettings;
 import processing.core.PGraphics;
 import processing.event.KeyEvent;
-import starship.base.main.Game;
-import starship.base.collision.GraphicManager;
-import starship.base.main.InputManager;
-import starship.base.main.SetupResult;
+import starship.base.main.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class CustomGameFramework implements GameFramework {
     private GraphicManager gm;
+    private CollisionManager cm;
     private Game game;
     private InputManager im;
     private float spawnAsteroidsClock;
 
     public CustomGameFramework(){
         this.gm = new GraphicManager();
+        this.cm = new CollisionManager();
         this.spawnAsteroidsClock = 1000f;
-        this.game = new Game(gm);
+        this.game = new Game(gm, cm);
     }
 
     @Override
@@ -51,6 +51,7 @@ public class CustomGameFramework implements GameFramework {
             spawnAsteroidsClock += timeSinceLastDraw;
         }
 
+        this.cm.collide();
         this.gm.draw(graphics);
         this.im.keysPressed(keySet);
     }

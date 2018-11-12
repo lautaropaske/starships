@@ -7,24 +7,24 @@ import starship.model.ShotBullet;
 
 public class BulletVisitor implements Visitor {
 
-    private Bullet bullet;
+    private ShotBullet bullet;
 
-    public BulletVisitor(Bullet bullet){
+    public BulletVisitor(ShotBullet bullet){
         this.bullet = bullet;
     }
 
     @Override
     public void visit(Ship ship) {
-
+        /*Bullets do not damage ship*/
     }
 
     @Override
-    public void visit(Asteroid ship) {
-
+    public void visit(Asteroid asteroid) {
+        asteroid.damage(bullet.getSize()*1000);
     }
 
     @Override
     public void visit(ShotBullet bullet) {
-        System.out.println("Asteroid - Bullet hit");
+        /*Game does not handle bullet collisions*/
     }
 }

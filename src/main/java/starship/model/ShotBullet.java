@@ -10,12 +10,13 @@ public class ShotBullet extends Solid{
     private Bullet bullet;
     private Player player;
 
-    public ShotBullet(Bullet bullet, Player player, Vector2 position, float shipHeading) {
+    public ShotBullet(String pairID, Bullet bullet, Player player, Vector2 position, float shipHeading) {
+        this.pairID = pairID;
         this.bullet = bullet;
         this.player = player;
         this.position = position;
         this.heading = shipHeading;
-        this.visitor = new BulletVisitor(bullet);
+        this.visitor = new BulletVisitor(this);
     }
 
     @Override
@@ -24,6 +25,11 @@ public class ShotBullet extends Solid{
     @Override
     void accept(Visitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    void wentOutOfBounds() {
+        hp = -1;
     }
 
     @Override
@@ -41,4 +47,12 @@ public class ShotBullet extends Solid{
 
     @Override
     public Shape getShape(){return bullet.shape;}
+
+    public Bullet getBullet() {
+        return bullet;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
 }

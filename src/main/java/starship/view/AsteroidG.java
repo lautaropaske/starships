@@ -1,12 +1,18 @@
 package starship.view;
 
 import processing.core.PGraphics;
+import starship.model.Asteroid;
 import starship.model.Observable;
 import starship.model.Solid;
 
 import java.awt.*;
 
 public class AsteroidG extends SolidG {
+
+    public AsteroidG(String pairID){
+        this.pairID = pairID;
+        this.clean = false;
+    }
 
     @Override
     public void drawSelf(PGraphics p) {

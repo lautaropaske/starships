@@ -1,15 +1,17 @@
 package starship.model.factories;
 
+import starship.base.collision.CollisionManager;
 import starship.base.vector.Vector2;
-import starship.base.collision.GraphicManager;
+import starship.base.main.GraphicManager;
 import starship.model.Asteroid;
 import starship.view.AsteroidG;
 
 import java.util.Random;
+import java.util.UUID;
 
-public class AsteroidFactory extends GraphicFactory {
-    public AsteroidFactory(GraphicManager observer) {
-        super(observer);
+public class AsteroidFactory extends SolidFactory {
+    public AsteroidFactory(GraphicManager observer, CollisionManager observer2) {
+        super(observer, observer2);
     }
 
     /**
@@ -32,8 +34,10 @@ public class AsteroidFactory extends GraphicFactory {
             }
 
             // Build asteroid
-            Asteroid asteroid = new Asteroid(new Random().nextInt(4) * 40 + 20, Vector2.vector(spawnX,spawnY));
-            AsteroidG asteroidG = new AsteroidG();
+            String pairID = UUID.randomUUID().toString();
+
+            Asteroid asteroid = new Asteroid(pairID,new Random().nextInt(4) * 40 + 20, Vector2.vector(spawnX,spawnY));
+            AsteroidG asteroidG = new AsteroidG(pairID);
             asteroid.add(asteroidG);
             asteroidG.update(asteroid);
             notifyObserver(asteroidG);

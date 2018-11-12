@@ -5,8 +5,10 @@ import starship.base.vector.Vector2;
 import starship.model.visitors.Visitor;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public abstract class Solid extends Observable<Solid> implements Collisionable<Solid> {
+    String pairID;
     int hp;
     Shape shape;
     Vector2 position;
@@ -16,11 +18,21 @@ public abstract class Solid extends Observable<Solid> implements Collisionable<S
     Visitor visitor;
 
     abstract void accept(Visitor visitor);
+    abstract void wentOutOfBounds();
 
     @Override
-    public Shape getShape(){ return shape;}
+    public Shape getShape(){ return AffineTransform.getTranslateInstance(position.getX(), position.getY()).createTransformedShape(shape);}
+    public String getPairID() {
+        return pairID;
+    }
     public Vector2 getPosition() {
         return position;
+    }
+    public int getHp() {
+        return hp;
+    }
+    public void setHp(int hp) {
+        this.hp = hp;
     }
     public int getSize() {
         return size;
@@ -29,7 +41,6 @@ public abstract class Solid extends Observable<Solid> implements Collisionable<S
         return heading;
     }
     public Vector2 getVelocity(){return velocity;}
-
     public void addPosition(Vector2 position) {
         this.position = this.position.add(position);
         notifyObservers();
@@ -37,5 +48,9 @@ public abstract class Solid extends Observable<Solid> implements Collisionable<S
     public void rotatePosition(float angle) {
         this.heading += angle;
         notifyObservers();
+    }
+
+    public void damage(int amount){
+        hp -= amount;
     }
 }

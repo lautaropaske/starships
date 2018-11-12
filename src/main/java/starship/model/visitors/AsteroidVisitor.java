@@ -14,16 +14,16 @@ public class AsteroidVisitor implements Visitor {
 
     @Override
     public void visit(Ship ship) {
-        ship.doDamage(asteroid.getSize()/2);
+        ship.damage(asteroid.getSize()/2);
     }
 
     @Override
     public void visit(Asteroid asteroid) {
-
+        /*Game does not handle asteroids collisions*/
     }
 
     @Override
     public void visit(ShotBullet bullet) {
-        System.out.println("Bullet - Asteroid hit");
+        bullet.damage(1);
     }
 }

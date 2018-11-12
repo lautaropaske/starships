@@ -18,12 +18,12 @@ public class ShipVisitor implements Visitor {
     }
 
     @Override
-    public void visit(Asteroid ship) {
+    public void visit(Asteroid asteroid) {
         /*Ship does not affect asteroids*/
     }
 
     @Override
-    public void visit(ShotBullet ship) {
-        /**/
+    public void visit(ShotBullet shotBullet) {
+        shotBullet.damage(1);
     }
 }

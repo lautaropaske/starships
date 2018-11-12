@@ -8,6 +8,11 @@ import java.awt.*;
 
 public class BulletG extends SolidG{
 
+    public BulletG(String pairID){
+        this.pairID = pairID;
+        this.clean = false;
+    }
+
     @Override
     public void drawSelf(PGraphics p) {
         p.pushMatrix();
