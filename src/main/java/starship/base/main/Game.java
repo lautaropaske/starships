@@ -33,7 +33,13 @@ public class Game {
 
         names.forEach(name -> {
             Player player = playerFactory.createPlayer(name);
-            ShipCommands shipCommands = createShipCommand(shipFactory.createShip(player, new BulletFactory(om)));
+
+            // TODO must read configuration from file and retrieve as many ShipCommand configurations as players supported
+            int[] keys = new int[]{KeyEvent.VK_W, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_D, KeyEvent.VK_E};
+
+            Ship ship = shipFactory.createShip(player, new BulletFactory(om));
+
+            ShipCommands shipCommands = createShipCommand(ship,keys);
             player.setCommands(shipCommands);
             result.addShipCommand(shipCommands);
         });
@@ -42,20 +48,19 @@ public class Game {
     }
 
     public void spawnAsteroids(){
-        asteroidFactory.spawn(new Random().nextInt(1));
+        asteroidFactory.spawn(new Random().nextInt(2));
     }
 
-    // TODO must read configuration from file and retrieve as many ShipCommand configurations as players supported
-    private ShipCommands createShipCommand(Ship ship /*TODO , pass config reading and set of keys*/){
+    private ShipCommands createShipCommand(Ship ship, int[] keys){
         Set<Command> commandSet = new HashSet<>();
 
         ShipController sc = new ShipController(ship);
 
-        commandSet.add(new MoveUpCommand(sc, KeyEvent.VK_W));
-        commandSet.add(new MoveLeftCommand(sc, KeyEvent.VK_A));
-        commandSet.add(new MoveDownCommand(sc, KeyEvent.VK_S));
-        commandSet.add(new MoveRightCommand(sc, KeyEvent.VK_D));
-        commandSet.add(new FireGunCommand(sc, KeyEvent.VK_E));
+        commandSet.add(new MoveUpCommand(sc, keys[0]));
+        commandSet.add(new MoveLeftCommand(sc, keys[1]));
+        commandSet.add(new MoveDownCommand(sc, keys[2]));
+        commandSet.add(new MoveRightCommand(sc, keys[3]));
+        commandSet.add(new FireGunCommand(sc, keys[4]));
 
         return new ShipCommands(commandSet);
 

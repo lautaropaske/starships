@@ -53,6 +53,7 @@ public class CustomGameFramework implements GameFramework {
             spawnAsteroidsClock += timeSinceLastDraw;
         }
 
+        this.om.clean();
         this.om.loop(graphics);
         this.im.keysPressed(keySet);
     }

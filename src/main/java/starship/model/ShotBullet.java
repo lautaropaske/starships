@@ -30,7 +30,7 @@ public class ShotBullet extends Solid{
     }
 
     @Override
-    public void wentOutOfBounds() {
+    public void wentOutOfBounds(int screenX, int screenY) {
         hp = -1;
     }
 

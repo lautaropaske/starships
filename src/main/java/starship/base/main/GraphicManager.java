@@ -24,16 +24,17 @@ public class GraphicManager {
         graphics.forEach(g -> g.drawSelf(p));
     }
     void clean() {
+        List<SolidG> remove = new ArrayList<>();
         graphics.forEach(e -> {
-            if(ObjectManager.isOutOfBounds(e.getLastState().getPosition(), screenX, screenY)) e.getLastState().wentOutOfBounds();
+            if(ObjectManager.isOutOfBounds(e.getLastState().getPosition(), screenX, screenY)) e.getLastState().wentOutOfBounds(screenX, screenY);
+            if(e.getLastState().getHp() <= 0) remove.add(e);
         });
-        graphics.removeAll(graphics.stream().filter(e -> e.getLastState().getHp() <= 0).collect(Collectors.toList()));
+        graphics.removeAll(remove);
     }
 
     void setScreenX(int screenX) {
         this.screenX = screenX;
     }
-
     void setScreenY(int screenY) {
         this.screenY = screenY;
     }

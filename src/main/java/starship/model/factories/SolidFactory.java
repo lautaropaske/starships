@@ -7,7 +7,7 @@ import starship.model.Solid;
 import starship.view.SolidG;
 
 class SolidFactory {
-    private ObjectManager om;
+    protected ObjectManager om;
 
     SolidFactory(ObjectManager om){
         this.om = om;

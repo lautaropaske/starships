@@ -42,7 +42,12 @@ public class Ship extends Solid{
     }
 
     @Override
-    public void wentOutOfBounds() {
-        /*How do you make it reappear?*/
+    public void wentOutOfBounds(int screenX, int screenY) {
+        if(position.getX() > screenX) position = Vector2.vector(0, position.getY());
+        if(position.getY() > screenY) position = Vector2.vector(position.getX(), 0);
+
+        if(position.getX() < 0) position = Vector2.vector(screenX, position.getY());
+        if(position.getY() < 0) position = Vector2.vector(position.getX(), screenY);
+
     }
 }

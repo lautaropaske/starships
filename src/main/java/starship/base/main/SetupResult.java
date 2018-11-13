@@ -1,6 +1,7 @@
 package starship.base.main;
 
 import starship.controller.ShipCommands;
+import starship.model.Ship;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,4 +20,5 @@ public class SetupResult {
     public Set<ShipCommands> getShipCommands(){
         return shipCommands;
     }
+
 }

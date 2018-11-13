@@ -18,7 +18,7 @@ public class ShipFactory extends SolidFactory {
     public Ship createShip(Player owner, BulletFactory bf) {
         String pairID = UUID.randomUUID().toString();
 
-        Ship ship = new Ship(pairID, owner, Vector2.vector(400, 300), bf);
+        Ship ship = new Ship(pairID, owner, Vector2.vector(om.getScreenX()/2, om.getScreenY()/2), bf);
         ShipG shipG = new ShipG(pairID);
         ship.add(shipG);
         shipG.update(ship);

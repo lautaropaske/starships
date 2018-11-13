@@ -2,6 +2,8 @@ package starship.base.collision;
 
 import starship.base.main.ObjectManager;
 import starship.model.Solid;
+import starship.view.SolidG;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,10 +24,12 @@ public class CollisionManager {
     }
 
     public void clean(){
+        List<Solid> remove = new ArrayList<>();
         collisionables.forEach(e -> {
-            if(ObjectManager.isOutOfBounds(e.getPosition(), screenX, screenY)) e.wentOutOfBounds();
+            if(ObjectManager.isOutOfBounds(e.getPosition(), screenX, screenY)) e.wentOutOfBounds(screenX, screenY);
+            if(e.getHp() <= 0) remove.add(e);
         });
-        collisionables.removeAll(collisionables.stream().filter(e -> e.getHp() <= 0).collect(Collectors.toList()));
+        collisionables.removeAll(remove);
     }
 
     public void collide(){

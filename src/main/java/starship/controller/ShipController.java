@@ -15,11 +15,13 @@ public class ShipController {
     }
 
     public void moveDown() {
-        ship.addPosition(ship.getVelocity().multiply(-1f).rotate(ship.getHeading()));
+        Vector2 position = ship.getVelocity().multiply(-1f).rotate(ship.getHeading());
+        ship.addPosition(position);
     }
 
     public void moveUp() {
-        ship.addPosition(ship.getVelocity().rotate(ship.getHeading()));
+        Vector2 position = ship.getVelocity().rotate(ship.getHeading());
+        ship.addPosition(position);
     }
 
     public void moveLeft() {
