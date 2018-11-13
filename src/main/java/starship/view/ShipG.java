@@ -15,6 +15,11 @@ public class ShipG extends SolidG{
     public void drawSelf(PGraphics p) {
         p.pushMatrix();
         p.translate(lastState.getPosition().getX(), lastState.getPosition().getY());
+
+        p.fill(51, 153, 255);
+        p.rect(-lastState.getSize(),-lastState.getSize()*1.6f,lastState.getHp()/(float)20,10);
+        p.noFill();
+
         p.rotate(lastState.getHeading());
 
         p.beginShape();
