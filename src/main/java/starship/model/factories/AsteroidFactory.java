@@ -1,18 +1,21 @@
 package starship.model.factories;
 
-import starship.base.collision.CollisionManager;
 import starship.base.main.ObjectManager;
 import starship.base.vector.Vector2;
-import starship.base.main.GraphicManager;
-import starship.model.Asteroid;
+import starship.model.solids.Asteroid;
 import starship.view.AsteroidG;
 
 import java.util.Random;
 import java.util.UUID;
 
 public class AsteroidFactory extends SolidFactory {
+    private final int screenX;
+    private final int screenY;
+
     public AsteroidFactory(ObjectManager om) {
         super(om);
+        this.screenX = om.getScreenX();
+        this.screenY = om.getScreenY();
     }
 
     /**
@@ -23,8 +26,8 @@ public class AsteroidFactory extends SolidFactory {
         for(; amount >= 0; amount-- ){
 
             Random r = new Random();
-            int boundX = 80;
-            int boundY = 60;
+            int boundX = screenX/10;
+            int boundY = screenY/10;
 
             float spawnX = -r.nextInt(boundX);
             float spawnY = -r.nextInt(boundY);

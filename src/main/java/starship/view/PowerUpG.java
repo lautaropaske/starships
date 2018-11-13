@@ -4,9 +4,8 @@ import processing.core.PGraphics;
 import starship.model.solids.Observable;
 import starship.model.solids.Solid;
 
-public class AsteroidG extends SolidG {
-
-    public AsteroidG(String pairID){
+public class PowerUpG extends SolidG{
+    public PowerUpG(String pairID) {
         this.pairID = pairID;
     }
 
@@ -16,11 +15,11 @@ public class AsteroidG extends SolidG {
         p.translate(lastState.getPosition().getX(), lastState.getPosition().getY());
         p.rotate(lastState.getHeading());
 
-        p.ellipse(0,0, lastState.getSize(), lastState.getSize());
+        p.fill(204, 102, 0);
+        p.rect(0,0, lastState.getSize(), lastState.getSize());
+        p.noFill();
         p.popMatrix();
     }
-
-
 
     @Override
     public void update(Observable<Solid> observable) {

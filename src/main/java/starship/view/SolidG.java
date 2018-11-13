@@ -1,13 +1,11 @@
 package starship.view;
 
 import processing.core.PGraphics;
-import starship.base.vector.Vector2;
-import starship.model.Solid;
+import starship.model.solids.Solid;
 
 public abstract class SolidG implements Observer<Solid>{
     String pairID;
     Solid lastState;
-    boolean clean;
 
     @Override
     public void update(Solid solid){

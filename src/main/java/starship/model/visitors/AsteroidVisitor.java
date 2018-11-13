@@ -1,8 +1,9 @@
 package starship.model.visitors;
 
-import starship.model.Asteroid;
-import starship.model.Ship;
-import starship.model.ShotBullet;
+import starship.model.solids.Asteroid;
+import starship.model.solids.powerups.PowerUp;
+import starship.model.solids.Ship;
+import starship.model.solids.ShotBullet;
 
 public class AsteroidVisitor implements Visitor {
 
@@ -25,5 +26,10 @@ public class AsteroidVisitor implements Visitor {
     @Override
     public void visit(ShotBullet bullet) {
         bullet.damage(2);
+    }
+
+    @Override
+    public void visit(PowerUp powerUp) {
+        // None
     }
 }

@@ -4,14 +4,11 @@ import starship.controller.ShipCommands;
 import starship.controller.ShipController;
 import starship.controller.commands.*;
 import starship.model.Player;
-import starship.model.Ship;
-import starship.model.factories.AsteroidFactory;
-import starship.model.factories.BulletFactory;
-import starship.model.factories.PlayerFactory;
-import starship.model.factories.ShipFactory;
-
-import java.awt.event.KeyEvent;
+import starship.model.solids.Ship;
+import starship.model.factories.*;
+import util.ConfigurationReader;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
@@ -19,27 +16,28 @@ public class Game {
     private final AsteroidFactory asteroidFactory;
     private final ShipFactory shipFactory;
     private final PlayerFactory playerFactory;
+    private final PowerUpFactory powerUpFactory;
     private final ObjectManager om;
 
     public Game(ObjectManager om){
         this.shipFactory = new ShipFactory(om);
         this.asteroidFactory = new AsteroidFactory(om);
         this.playerFactory = new PlayerFactory();
+        this.powerUpFactory = new PowerUpFactory(om);
         this.om = om;
     }
 
     public SetupResult setup(Set<String> names){
+        ConfigurationReader cr = new ConfigurationReader();
+        Iterator<int[]> keySet = cr.getKeySet().iterator();
+
+
         SetupResult result = new SetupResult();
 
         names.forEach(name -> {
             Player player = playerFactory.createPlayer(name);
-
-            // TODO must read configuration from file and retrieve as many ShipCommand configurations as players supported
-            int[] keys = new int[]{KeyEvent.VK_W, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_D, KeyEvent.VK_E};
-
             Ship ship = shipFactory.createShip(player, new BulletFactory(om));
-
-            ShipCommands shipCommands = createShipCommand(ship,keys);
+            ShipCommands shipCommands = createShipCommand(ship,keySet.next());
             player.setCommands(shipCommands);
             result.addShipCommand(shipCommands);
         });
@@ -49,6 +47,9 @@ public class Game {
 
     public void spawnAsteroids(){
         asteroidFactory.spawn(new Random().nextInt(2));
+    }
+    public void spawnPowerUp(){
+        powerUpFactory.spawnDoubleFire();
     }
 
     private ShipCommands createShipCommand(Ship ship, int[] keys){

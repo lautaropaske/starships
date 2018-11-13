@@ -1,7 +1,7 @@
 package starship.controller;
 
 import starship.base.vector.Vector2;
-import starship.model.Ship;
+import starship.model.solids.Ship;
 
 public class ShipController {
     private Ship ship;

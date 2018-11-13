@@ -1,9 +1,7 @@
 package starship.model.factories;
 
-import starship.base.collision.CollisionManager;
-import starship.base.main.GraphicManager;
 import starship.base.main.ObjectManager;
-import starship.model.Solid;
+import starship.model.solids.Solid;
 import starship.view.SolidG;
 
 class SolidFactory {

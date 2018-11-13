@@ -1,13 +1,11 @@
 package starship.model.factories;
 
-import starship.base.collision.CollisionManager;
 import starship.base.main.ObjectManager;
 import starship.base.vector.Vector2;
-import starship.base.main.GraphicManager;
-import starship.model.Bullet;
+import starship.model.solids.Bullet;
 import starship.model.Player;
-import starship.model.ShotBullet;
-import starship.model.SimpleBullet;
+import starship.model.solids.ShotBullet;
+import starship.model.solids.SimpleBullet;
 import starship.view.BulletG;
 
 import java.util.UUID;

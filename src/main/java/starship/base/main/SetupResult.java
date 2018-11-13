@@ -1,7 +1,6 @@
 package starship.base.main;
 
 import starship.controller.ShipCommands;
-import starship.model.Ship;
 
 import java.util.HashSet;
 import java.util.Set;

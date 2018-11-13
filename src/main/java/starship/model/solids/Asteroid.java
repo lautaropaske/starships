@@ -1,4 +1,4 @@
-package starship.model;
+package starship.model.solids;
 
 import processing.core.PConstants;
 import starship.base.vector.Vector2;
@@ -27,7 +27,7 @@ public class Asteroid extends Solid{
     }
 
     @Override
-    void accept(Visitor visitor) {
+    public void accept(Visitor visitor) {
         visitor.visit(this);
     }
 

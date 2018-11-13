@@ -1,4 +1,4 @@
-package starship.model;
+package starship.model.solids;
 
 import starship.base.vector.Vector2;
 import java.awt.*;

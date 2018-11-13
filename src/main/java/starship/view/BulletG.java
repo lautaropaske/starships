@@ -1,16 +1,13 @@
 package starship.view;
 
 import processing.core.PGraphics;
-import starship.model.Observable;
-import starship.model.Solid;
-
-import java.awt.*;
+import starship.model.solids.Observable;
+import starship.model.solids.Solid;
 
 public class BulletG extends SolidG{
 
     public BulletG(String pairID){
         this.pairID = pairID;
-        this.clean = false;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package starship.model;
+package starship.model.solids;
 
 import starship.base.collision.Collisionable;
 import starship.base.vector.Vector2;
@@ -8,16 +8,16 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 
 public abstract class Solid extends Observable<Solid> implements Collisionable<Solid> {
-    String pairID;
-    int hp;
-    Shape shape;
-    Vector2 position;
-    Vector2 velocity;
-    int size;
-    float heading;
-    Visitor visitor;
+    protected String pairID;
+    protected int hp;
+    protected Shape shape;
+    protected Vector2 position;
+    protected Vector2 velocity;
+    protected int size;
+    protected float heading;
+    protected Visitor visitor;
 
-    abstract void accept(Visitor visitor);
+    public abstract void accept(Visitor visitor);
     public abstract void wentOutOfBounds(int screenX, int screenY);
 
     @Override

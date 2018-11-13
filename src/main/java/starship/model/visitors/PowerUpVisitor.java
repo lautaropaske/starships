@@ -1,31 +1,30 @@
 package starship.model.visitors;
 
-import starship.model.solids.powerups.PowerUp;
 import starship.model.solids.Asteroid;
+import starship.model.solids.powerups.PowerUp;
 import starship.model.solids.Ship;
 import starship.model.solids.ShotBullet;
 
-public class BulletVisitor implements Visitor {
+public class PowerUpVisitor implements Visitor {
 
-    private ShotBullet bullet;
+    private PowerUp powerUp;
 
-    public BulletVisitor(ShotBullet bullet){
-        this.bullet = bullet;
-    }
+    public PowerUpVisitor(PowerUp powerUp){this.powerUp = powerUp;}
 
     @Override
     public void visit(Ship ship) {
-        /*Bullets do not damage ship*/
+        powerUp.setDecorator(ship.getGun());
+        ship.setGun(powerUp.getDecorator());
     }
 
     @Override
     public void visit(Asteroid asteroid) {
-        asteroid.damage(bullet.getSize()*1000);
+        // None
     }
 
     @Override
     public void visit(ShotBullet bullet) {
-        /*Game does not handle bullet collisions*/
+        // None
     }
 
     @Override

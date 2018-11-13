@@ -1,10 +1,9 @@
-package starship.model;
+package starship.model.solids;
 
 import starship.base.vector.Vector2;
+import starship.model.Player;
 import starship.model.visitors.BulletVisitor;
 import starship.model.visitors.Visitor;
-
-import java.awt.*;
 
 public class ShotBullet extends Solid{
     private Bullet bullet;
@@ -25,7 +24,7 @@ public class ShotBullet extends Solid{
     public void collisionedWith(Solid collisionable) { collisionable.accept(this.visitor);}
 
     @Override
-    void accept(Visitor visitor) {
+    public void accept(Visitor visitor) {
         visitor.visit(this);
     }
 

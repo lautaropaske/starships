@@ -3,7 +3,7 @@ package starship.base.main;
 import processing.core.PGraphics;
 import starship.base.collision.CollisionManager;
 import starship.base.vector.Vector2;
-import starship.model.Solid;
+import starship.model.solids.Solid;
 import starship.view.SolidG;
 
 public class ObjectManager {

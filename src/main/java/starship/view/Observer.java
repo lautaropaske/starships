@@ -1,7 +1,7 @@
 package starship.view;
 
-import starship.model.Observable;
-import starship.model.Solid;
+import starship.model.solids.Observable;
+import starship.model.solids.Solid;
 
 public interface Observer<T> {
     void update(Observable<T> observable);

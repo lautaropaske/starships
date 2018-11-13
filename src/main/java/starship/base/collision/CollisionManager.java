@@ -1,12 +1,10 @@
 package starship.base.collision;
 
 import starship.base.main.ObjectManager;
-import starship.model.Solid;
-import starship.view.SolidG;
+import starship.model.solids.Solid;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CollisionManager {
     private List<Solid> collisionables;

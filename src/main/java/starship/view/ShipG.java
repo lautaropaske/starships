@@ -2,16 +2,13 @@ package starship.view;
 
 import processing.core.PConstants;
 import processing.core.PGraphics;
-import starship.model.Observable;
-import starship.model.Solid;
-
-import java.awt.*;
+import starship.model.solids.Observable;
+import starship.model.solids.Solid;
 
 public class ShipG extends SolidG{
 
     public ShipG(String pairID){
         this.pairID = pairID;
-        this.clean = false;
     }
     
     @Override

@@ -1,6 +1,7 @@
-package starship.model;
+package starship.model.solids;
 
 import starship.base.vector.Vector2;
+import starship.model.Player;
 import starship.model.factories.BulletFactory;
 import starship.model.gun.Gun;
 import starship.model.gun.SimpleGun;
@@ -49,5 +50,13 @@ public class Ship extends Solid{
         if(position.getX() < 0) position = Vector2.vector(screenX, position.getY());
         if(position.getY() < 0) position = Vector2.vector(position.getX(), screenY);
 
+    }
+
+    public void setGun(Gun gun){
+        this.gun = gun;
+    }
+
+    public Gun getGun() {
+        return gun;
     }
 }
