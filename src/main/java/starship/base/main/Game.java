@@ -1,6 +1,5 @@
 package starship.base.main;
 
-import starship.base.collision.CollisionManager;
 import starship.controller.ShipCommands;
 import starship.controller.ShipController;
 import starship.controller.commands.*;
@@ -20,15 +19,13 @@ public class Game {
     private final AsteroidFactory asteroidFactory;
     private final ShipFactory shipFactory;
     private final PlayerFactory playerFactory;
-    private final GraphicManager gm;
-    private final CollisionManager cm;
+    private final ObjectManager om;
 
-    public Game(GraphicManager gm, CollisionManager cm){
-        this.shipFactory = new ShipFactory(gm, cm);
-        this.asteroidFactory = new AsteroidFactory(gm, cm);
+    public Game(ObjectManager om){
+        this.shipFactory = new ShipFactory(om);
+        this.asteroidFactory = new AsteroidFactory(om);
         this.playerFactory = new PlayerFactory();
-        this.gm = gm;
-        this.cm = cm;
+        this.om = om;
     }
 
     public SetupResult setup(Set<String> names){
@@ -36,7 +33,7 @@ public class Game {
 
         names.forEach(name -> {
             Player player = playerFactory.createPlayer(name);
-            ShipCommands shipCommands = createShipCommand(shipFactory.createShip(player, new BulletFactory(gm, cm)));
+            ShipCommands shipCommands = createShipCommand(shipFactory.createShip(player, new BulletFactory(om)));
             player.setCommands(shipCommands);
             result.addShipCommand(shipCommands);
         });

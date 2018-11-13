@@ -42,7 +42,7 @@ public class Ship extends Solid{
     }
 
     @Override
-    void wentOutOfBounds() {
+    public void wentOutOfBounds() {
         /*How do you make it reappear?*/
     }
 }

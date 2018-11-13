@@ -1,6 +1,7 @@
 package starship.model.factories;
 
 import starship.base.collision.CollisionManager;
+import starship.base.main.ObjectManager;
 import starship.base.vector.Vector2;
 import starship.base.main.GraphicManager;
 import starship.model.Asteroid;
@@ -10,8 +11,8 @@ import java.util.Random;
 import java.util.UUID;
 
 public class AsteroidFactory extends SolidFactory {
-    public AsteroidFactory(GraphicManager observer, CollisionManager observer2) {
-        super(observer, observer2);
+    public AsteroidFactory(ObjectManager om) {
+        super(om);
     }
 
     /**
@@ -40,7 +41,7 @@ public class AsteroidFactory extends SolidFactory {
             AsteroidG asteroidG = new AsteroidG(pairID);
             asteroid.add(asteroidG);
             asteroidG.update(asteroid);
-            notifyObserver(asteroidG);
+            notifyObserver(asteroid, asteroidG);
         }
     }
 }

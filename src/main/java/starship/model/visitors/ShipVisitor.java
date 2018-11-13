@@ -24,6 +24,6 @@ public class ShipVisitor implements Visitor {
 
     @Override
     public void visit(ShotBullet shotBullet) {
-        shotBullet.damage(1);
+        /*Do not handle bullet collisions*/
     }
 }

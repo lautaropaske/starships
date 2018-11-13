@@ -12,23 +12,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CustomGameFramework implements GameFramework {
-    private GraphicManager gm;
-    private CollisionManager cm;
+    private final int screenX;
+    private final int screenY;
+    private ObjectManager om;
     private Game game;
     private InputManager im;
     private float spawnAsteroidsClock;
 
     public CustomGameFramework(){
-        this.gm = new GraphicManager();
-        this.cm = new CollisionManager();
+        this.screenX = 1000;
+        this.screenY = 800;
+        this.om = new ObjectManager(new CollisionManager(), new GraphicManager(), this.screenX, this.screenY);
         this.spawnAsteroidsClock = 1000f;
-        this.game = new Game(gm, cm);
+        this.game = new Game(om);
     }
 
     @Override
     public void setup(WindowSettings windowsSettings, ImageLoader imageLoader) {
         windowsSettings
-            .setSize(1000, 800);
+            .setSize(this.screenX, this.screenY);
 
         //TODO has to have an initial input controller to check for name input and set game configuration previous to initialization of a match
 
@@ -51,8 +53,7 @@ public class CustomGameFramework implements GameFramework {
             spawnAsteroidsClock += timeSinceLastDraw;
         }
 
-        this.cm.collide();
-        this.gm.draw(graphics);
+        this.om.loop(graphics);
         this.im.keysPressed(keySet);
     }
 

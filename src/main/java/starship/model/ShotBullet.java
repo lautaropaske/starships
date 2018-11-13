@@ -11,8 +11,10 @@ public class ShotBullet extends Solid{
     private Player player;
 
     public ShotBullet(String pairID, Bullet bullet, Player player, Vector2 position, float shipHeading) {
+        this.hp = bullet.hp;
         this.pairID = pairID;
         this.bullet = bullet;
+        this.shape = bullet.shape;
         this.player = player;
         this.position = position;
         this.heading = shipHeading;
@@ -28,7 +30,7 @@ public class ShotBullet extends Solid{
     }
 
     @Override
-    void wentOutOfBounds() {
+    public void wentOutOfBounds() {
         hp = -1;
     }
 
@@ -44,9 +46,6 @@ public class ShotBullet extends Solid{
         this.position = this.position.add(bullet.velocity.rotate(heading));
         return position;
     }
-
-    @Override
-    public Shape getShape(){return bullet.shape;}
 
     public Bullet getBullet() {
         return bullet;

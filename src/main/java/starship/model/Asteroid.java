@@ -32,7 +32,7 @@ public class Asteroid extends Solid{
     }
 
     @Override
-    void wentOutOfBounds() {
+    public void wentOutOfBounds() {
         hp = -1;
     }
 

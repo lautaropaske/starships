@@ -2,19 +2,18 @@ package starship.model.factories;
 
 import starship.base.collision.CollisionManager;
 import starship.base.main.GraphicManager;
+import starship.base.main.ObjectManager;
+import starship.model.Solid;
 import starship.view.SolidG;
 
 class SolidFactory {
-    private GraphicManager observer;
-    private CollisionManager observer2;
+    private ObjectManager om;
 
-    SolidFactory(GraphicManager observer, CollisionManager observer2){
-        this.observer = observer;
-        this.observer2 = observer2;
+    SolidFactory(ObjectManager om){
+        this.om = om;
     }
 
-    void notifyObserver(SolidG graphic){
-        observer.addGraphic(graphic);
-        observer2.addCollisionable(graphic.getLastState());
+    void notifyObserver(Solid solid, SolidG solidG){
+        om.addObject(solid, solidG);
     }
 }

@@ -18,7 +18,7 @@ public abstract class Solid extends Observable<Solid> implements Collisionable<S
     Visitor visitor;
 
     abstract void accept(Visitor visitor);
-    abstract void wentOutOfBounds();
+    public abstract void wentOutOfBounds();
 
     @Override
     public Shape getShape(){ return AffineTransform.getTranslateInstance(position.getX(), position.getY()).createTransformedShape(shape);}
