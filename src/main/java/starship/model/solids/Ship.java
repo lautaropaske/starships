@@ -4,32 +4,41 @@ import starship.base.vector.Vector2;
 import starship.model.Player;
 import starship.model.factories.BulletFactory;
 import starship.model.gun.Gun;
+import starship.model.gun.RocketGun;
 import starship.model.gun.SimpleGun;
 import starship.model.visitors.ShipVisitor;
 import starship.model.visitors.Visitor;
 
 import java.awt.*;
+import java.util.*;
 
 public class Ship extends Solid{
 
-    private Gun gun;
+    private Queue<Gun> guns;
     private Player owner;
 
     public Ship(String pairID, Player owner, Vector2 position, BulletFactory bulletFactory){
         this.pairID = pairID;
-        this.hp = 1000000000;
+        this.hp = 1000;
         this.position = position;
         this.size = 30;
+        this.damageCaused = 30;
         this.heading = 0;
         this.velocity = Vector2.vector(0,5);
         this.shape = new Rectangle(0,0, size, size);
         this.visitor = new ShipVisitor(this);
-        this.gun = new SimpleGun(bulletFactory);
+        this.guns = new LinkedList<>();
+        guns.add(new SimpleGun(bulletFactory));
+        guns.add(new RocketGun(bulletFactory));
         this.owner = owner;
     }
 
     public void fireGun(){
-        this.gun.fireGun(owner, position, this.heading);
+        this.guns.peek().fireGun(owner, position, this.heading);
+    }
+
+    public void changeGun(){
+        guns.add(guns.remove());
     }
 
     @Override
@@ -52,11 +61,7 @@ public class Ship extends Solid{
 
     }
 
-    public void setGun(Gun gun){
-        this.gun = gun;
-    }
-
-    public Gun getGun() {
-        return gun;
+    public Player getOwner() {
+        return owner;
     }
 }

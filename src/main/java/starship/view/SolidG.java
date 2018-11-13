@@ -1,6 +1,7 @@
 package starship.view;
 
 import processing.core.PGraphics;
+import starship.model.solids.Observable;
 import starship.model.solids.Solid;
 
 public abstract class SolidG implements Observer<Solid>{
@@ -8,8 +9,8 @@ public abstract class SolidG implements Observer<Solid>{
     Solid lastState;
 
     @Override
-    public void update(Solid solid){
-        this.lastState = solid;
+    public void update(Observable<Solid> solid){
+        this.lastState = (Solid) solid;
     }
     public abstract void drawSelf(PGraphics p);
 

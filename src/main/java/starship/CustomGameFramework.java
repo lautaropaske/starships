@@ -20,14 +20,12 @@ public class CustomGameFramework implements GameFramework {
     private Game game;
     private InputManager im;
     private float spawnAsteroidsClock;
-    private float spawnPowerUpClock;
 
     public CustomGameFramework(){
         this.screenX = 1000;
         this.screenY = 800;
         this.om = new ObjectManager(new CollisionManager(), new GraphicManager(), this.screenX, this.screenY);
         this.spawnAsteroidsClock = 1000f;
-        this.spawnPowerUpClock = 100000f;
         this.game = new Game(om);
     }
 
@@ -49,14 +47,9 @@ public class CustomGameFramework implements GameFramework {
 
     @Override
     public void draw(PGraphics graphics, float timeSinceLastDraw, Set<Integer> keySet) {
-        graphics.background(255,255,255);
+        // TODO SHIPS ARE NOT DYING
 
-        if(spawnPowerUpClock >= 100000f){
-            game.spawnPowerUp();
-            spawnPowerUpClock = 0;
-        } else {
-            spawnPowerUpClock += timeSinceLastDraw;
-        }
+        graphics.background(255);
 
         if(spawnAsteroidsClock >= 1500f){
             game.spawnAsteroids();

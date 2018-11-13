@@ -31,4 +31,8 @@ public class ShipController {
     public void moveRight() {
         ship.rotatePosition(0.1f);
     }
+
+    public void changeGun() {
+        ship.changeGun();
+    }
 }

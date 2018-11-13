@@ -20,7 +20,7 @@ public class ConfigurationReader {
 
             while ((sCurrentLine = br.readLine()) != null) {
                 if(playerPattern.matcher(sCurrentLine).matches()){
-                    int[] keys = new int[5];
+                    int[] keys = new int[6];
 
                     br.readLine(); // Skip '-'
                     keys[0] = getKeyCode(br.readLine()); // move_up
@@ -28,6 +28,7 @@ public class ConfigurationReader {
                     keys[2] = getKeyCode(br.readLine()); // move_down
                     keys[3] = getKeyCode(br.readLine()); // move_right
                     keys[4] = getKeyCode(br.readLine()); // fire_gun
+                    keys[5] = getKeyCode(br.readLine()); // change_gun
                     br.readLine(); // Skip '\n'
 
                     keySet.add(keys);

@@ -1,35 +1,43 @@
 package starship.base.main;
 
 import processing.core.PGraphics;
+import starship.view.Drawable;
 import starship.view.SolidG;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GraphicManager {
-    private List<SolidG> graphics;
+    private List<SolidG> solidGS;
+    private List<Drawable> drawables;
     private int screenX;
     private int screenY;
 
     public GraphicManager(){
-        graphics = new ArrayList<>();
+        solidGS = new ArrayList<>();
+        drawables = new ArrayList<>();
     }
 
-    void addGraphic(SolidG sg){
-        graphics.add(sg);
+    void addSolidG(SolidG solidG){
+        solidGS.add(solidG);
+    }
+    
+    void addDrawable(Drawable drawable){
+        drawables.add(drawable);
     }
 
     void draw(PGraphics p){
-        graphics.forEach(g -> g.drawSelf(p));
+        solidGS.forEach(g -> g.drawSelf(p));
+        drawables.forEach(d -> d.drawSelf(p));
     }
+
     void clean() {
         List<SolidG> remove = new ArrayList<>();
-        graphics.forEach(e -> {
+        solidGS.forEach(e -> {
             if(ObjectManager.isOutOfBounds(e.getLastState().getPosition(), screenX, screenY)) e.getLastState().wentOutOfBounds(screenX, screenY);
             if(e.getLastState().getHp() <= 0) remove.add(e);
         });
-        graphics.removeAll(remove);
+        solidGS.removeAll(remove);
     }
 
     void setScreenX(int screenX) {

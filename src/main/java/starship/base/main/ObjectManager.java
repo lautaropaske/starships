@@ -4,6 +4,7 @@ import processing.core.PGraphics;
 import starship.base.collision.CollisionManager;
 import starship.base.vector.Vector2;
 import starship.model.solids.Solid;
+import starship.view.Drawable;
 import starship.view.SolidG;
 
 public class ObjectManager {
@@ -27,7 +28,14 @@ public class ObjectManager {
 
     public void addObject(Solid solid, SolidG solidG){
         cm.addCollisionable(solid);
-        gm.addGraphic(solidG);
+        gm.addSolidG(solidG);
+    }
+
+    /**
+     * For elements without a collisionable representation, i.e PlayerG
+     * */
+    public void addDrawable(Drawable drawable){
+        gm.addDrawable(drawable);
     }
 
     public void clean(){

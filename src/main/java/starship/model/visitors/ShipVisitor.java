@@ -1,9 +1,8 @@
 package starship.model.visitors;
 
 import starship.model.solids.Asteroid;
-import starship.model.solids.powerups.PowerUp;
 import starship.model.solids.Ship;
-import starship.model.solids.ShotBullet;
+import starship.model.solids.bullets.ShotBullet;
 
 public class ShipVisitor implements Visitor {
 
@@ -20,16 +19,11 @@ public class ShipVisitor implements Visitor {
 
     @Override
     public void visit(Asteroid asteroid) {
-        /*Ship does not affect asteroids*/
+        asteroid.damage(ship.getDamageCaused());
     }
 
     @Override
     public void visit(ShotBullet shotBullet) {
-        /*Do not handle bullet collisions*/
-    }
-
-    @Override
-    public void visit(PowerUp powerUp) {
-        powerUp.damage(2);
+        if(!shotBullet.getPlayer().equals(ship.getOwner())) shotBullet.damage(ship.getDamageCaused());
     }
 }

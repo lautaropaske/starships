@@ -16,6 +16,7 @@ public abstract class Solid extends Observable<Solid> implements Collisionable<S
     protected int size;
     protected float heading;
     protected Visitor visitor;
+    protected int damageCaused;
 
     public abstract void accept(Visitor visitor);
     public abstract void wentOutOfBounds(int screenX, int screenY);
@@ -25,6 +26,11 @@ public abstract class Solid extends Observable<Solid> implements Collisionable<S
     public String getPairID() {
         return pairID;
     }
+
+    public int getDamageCaused(){
+        return damageCaused;
+    };
+
     public Vector2 getPosition() {
         return position;
     }

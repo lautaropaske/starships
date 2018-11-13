@@ -1,11 +1,12 @@
-package starship.model.solids;
+package starship.model.solids.bullets;
 
 import starship.base.vector.Vector2;
 import starship.model.Player;
+import starship.model.solids.Solid;
 import starship.model.visitors.BulletVisitor;
 import starship.model.visitors.Visitor;
 
-public class ShotBullet extends Solid{
+public class ShotBullet extends Solid {
     private Bullet bullet;
     private Player player;
 
@@ -35,6 +36,11 @@ public class ShotBullet extends Solid{
 
     @Override
     public int getSize(){return bullet.size;}
+
+    @Override
+    public int getDamageCaused(){
+        return bullet.damageCaused;
+    }
 
     /**
      * Position is overriden because Bullet, as Asteroid, moves by itself; that means every time I want to check
