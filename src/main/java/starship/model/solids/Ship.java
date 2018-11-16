@@ -14,6 +14,7 @@ import java.util.*;
 
 public class Ship extends Solid{
 
+    private int lives;
     private Queue<Gun> guns;
     private Player owner;
 
@@ -31,6 +32,7 @@ public class Ship extends Solid{
         guns.add(new SimpleGun(bulletFactory));
         guns.add(new RocketGun(bulletFactory));
         this.owner = owner;
+        this.lives = owner.getLives();
     }
 
     public void fireGun(){
@@ -59,6 +61,16 @@ public class Ship extends Solid{
         if(position.getX() < 0) position = Vector2.vector(screenX, position.getY());
         if(position.getY() < 0) position = Vector2.vector(position.getX(), screenY);
 
+    }
+
+    @Override
+    public void damage(int amount){
+        hp -= amount;
+
+        if(hp <= 0 && lives > 1){
+            hp = 1000;
+            lives--;
+        }
     }
 
     public Player getOwner() {

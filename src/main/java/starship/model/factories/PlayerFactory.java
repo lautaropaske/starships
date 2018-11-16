@@ -23,17 +23,22 @@ public class PlayerFactory {
     }
 
     private int[] calculateDrawCoordinate(int playerNumber){
+        //TODO ORDER PLAYER DRAW
         int[] coordinate = new int[2];
 
         int drawSpaceX = om.getScreenX() / 4;
         int drawSpaceY = om.getScreenY() / 4;
 
         coordinate[0] = (playerNumber-1) * drawSpaceX;
+        coordinate[1] = 0;
+
         if(playerNumber > 4) {
             coordinate[0] = (playerNumber-5) * drawSpaceX;
             coordinate[1] = (playerNumber-1) * drawSpaceY;
         }
 
+        coordinate[0] += Math.round(om.getScreenX()/25f);
+        coordinate[1] += Math.round(om.getScreenX()/25f);
         return coordinate;
     }
 }

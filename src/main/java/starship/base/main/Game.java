@@ -13,12 +13,14 @@ import java.util.Random;
 import java.util.Set;
 
 public class Game {
+    private final BorderFactory borderFactory;
     private final AsteroidFactory asteroidFactory;
     private final ShipFactory shipFactory;
     private final PlayerFactory playerFactory;
     private final ObjectManager om;
 
     public Game(ObjectManager om){
+        this.borderFactory = new BorderFactory(om);
         this.shipFactory = new ShipFactory(om);
         this.asteroidFactory = new AsteroidFactory(om);
         this.playerFactory = new PlayerFactory(om);
@@ -26,6 +28,8 @@ public class Game {
     }
 
     public SetupResult setup(Set<String> names){
+        borderFactory.createBorder();
+
         ConfigurationReader cr = new ConfigurationReader();
         Iterator<int[]> keySet = cr.getKeySet().iterator();
         Iterator<String> nameIterator = names.iterator();

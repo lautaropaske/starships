@@ -7,12 +7,14 @@ public class Player extends Observable<Player> {
     private String name;
     private int playerNumber;
     private int score;
+    private int lives;
     private ShipCommands commands;
 
     public Player(String name, int playerNumber) {
         this.name = name;
         this.playerNumber = playerNumber;
         this.score = 0;
+        this.lives = 3;
     }
 
     public String getName() {
@@ -40,7 +42,17 @@ public class Player extends Observable<Player> {
         return score;
     }
 
-    public void scored(int size) {
-        this.score += size;
+    public void scored(int amount) {
+        this.score += amount;
     }
+
+    public int getLives(){
+        return lives;
+    }
+
+    public void lostLife(){
+        this.lives -= 1;
+    }
+
+
 }

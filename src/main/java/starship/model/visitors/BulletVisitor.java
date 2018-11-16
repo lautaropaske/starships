@@ -15,8 +15,9 @@ public class BulletVisitor implements Visitor {
     @Override
     public void visit(Ship ship) {
         if(!bullet.getPlayer().equals(ship.getOwner())) {
+            if(ship.getHp() - bullet.getDamageCaused() <= 0) bullet.getPlayer().scored(1000);
             ship.damage(bullet.getDamageCaused());
-            if(ship.getHp() <= 0) bullet.getPlayer().scored(1000);
+            if(ship.getHp() <= 0) ship.getOwner().lostLife();
         }
     }
 

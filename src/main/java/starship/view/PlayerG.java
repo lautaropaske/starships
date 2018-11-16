@@ -1,7 +1,5 @@
 package starship.view;
 
-import processing.core.PConstants;
-import processing.core.PFont;
 import processing.core.PGraphics;
 import starship.model.Player;
 import starship.model.solids.Observable;
@@ -33,6 +31,7 @@ public class PlayerG  implements Observer<Player>, Drawable{
 
         p.popMatrix();
     }
+
     public Player getLastState() {
         return lastState;
     }

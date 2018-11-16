@@ -24,6 +24,8 @@ public class ShipVisitor implements Visitor {
 
     @Override
     public void visit(ShotBullet shotBullet) {
-        if(!shotBullet.getPlayer().equals(ship.getOwner())) shotBullet.damage(ship.getDamageCaused());
+        if(!shotBullet.getPlayer().equals(ship.getOwner())){
+            shotBullet.damage(ship.getDamageCaused());
+        }
     }
 }

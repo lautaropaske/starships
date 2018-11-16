@@ -1,5 +1,6 @@
 package starship.view;
 
+import processing.core.PConstants;
 import processing.core.PGraphics;
 import starship.model.solids.Observable;
 import starship.model.solids.Solid;
@@ -13,6 +14,7 @@ public class SimpleBulletG extends SolidG{
     @Override
     public void drawSelf(PGraphics p) {
         p.pushMatrix();
+        p.shapeMode(PConstants.CENTER);
         p.translate(lastState.getPosition().getX(), lastState.getPosition().getY());
         p.rotate(lastState.getHeading());
 
