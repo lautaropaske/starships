@@ -1,13 +1,15 @@
 package starship.view;
 
 import processing.core.PGraphics;
+import processing.core.PImage;
 import starship.model.solids.Observable;
 import starship.model.solids.Solid;
 
 public class AsteroidG extends SolidG {
 
-    public AsteroidG(String pairID){
+    public AsteroidG(String pairID, PImage image){
         this.pairID = pairID;
+        this.image = image;
     }
 
     @Override
@@ -16,7 +18,7 @@ public class AsteroidG extends SolidG {
         p.translate(lastState.getPosition().getX(), lastState.getPosition().getY());
         p.rotate(lastState.getHeading());
 
-        p.ellipse(0,0, lastState.getSize(), lastState.getSize());
+        p.image(image,0,0,lastState.getSize(),lastState.getSize());
         p.popMatrix();
     }
 

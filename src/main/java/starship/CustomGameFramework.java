@@ -20,21 +20,23 @@ public class CustomGameFramework implements GameFramework {
     private Game game;
     private InputManager im;
     private float spawnAsteroidsClock;
+    private PImage background;
 
     public CustomGameFramework(){
         this.screenX = 1000;
         this.screenY = 800;
         this.om = new ObjectManager(new CollisionManager(), new GraphicManager(), this.screenX, this.screenY);
         this.spawnAsteroidsClock = 1000f;
-        this.game = new Game(om);
     }
 
     @Override
     public void setup(WindowSettings windowsSettings, ImageLoader imageLoader) {
+        this.game = new Game(om, imageLoader);
+
         windowsSettings
             .setSize(this.screenX, this.screenY);
 
-        //TODO has to have an initial input controller to check for name input and set game configuration previous to initialization of a match
+        //TODO Make an initial input controller to check for name input and set game configuration previous to initialization of a match
 
         Set<String> names = new HashSet<>();
         names.add("Player1");
@@ -43,13 +45,15 @@ public class CustomGameFramework implements GameFramework {
         SetupResult setupResult = game.setup(names);
 
         this.im = new InputManager(setupResult.getShipCommands());
+        this.background = setupResult.getBackground();
+        background.resize(screenX,screenY);
     }
 
     @Override
     public void draw(PGraphics graphics, float timeSinceLastDraw, Set<Integer> keySet) {
         // TODO SHIPS ARE NOT DYING
-
-        graphics.background(255);
+        // TODO LIVES SYSTEM NOT WORKING PROPERLY
+        graphics.background(background);
 
         if(spawnAsteroidsClock >= 1500f){
             game.spawnAsteroids();

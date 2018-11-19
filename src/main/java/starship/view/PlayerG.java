@@ -9,10 +9,12 @@ public class PlayerG  implements Observer<Player>, Drawable{
     private Player lastState;
     private int drawX;
     private int drawY;
+    private int size;
 
-    public PlayerG(int drawX, int drawY){
+    public PlayerG(int drawX, int drawY, int size){
         this.drawX = drawX;
         this.drawY = drawY;
+        this.size = size;
     }
 
     @Override
@@ -20,8 +22,10 @@ public class PlayerG  implements Observer<Player>, Drawable{
         p.pushMatrix();
         p.translate((float) drawX, (float) drawY);
 
+        p.fill(255);
+        p.rect(10,0,size-10f,100);
         String player = ""+lastState.getName();
-        String score = "Score: "+lastState.getScore();
+        String score = "Score: "+lastState.getScore()+"  Lives: "+lastState.getLives();
         p.fill(0);
         p.textSize(24);
         p.text(player, 50, 50);

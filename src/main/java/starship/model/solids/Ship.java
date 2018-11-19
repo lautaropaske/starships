@@ -22,7 +22,7 @@ public class Ship extends Solid{
         this.pairID = pairID;
         this.hp = 1000;
         this.position = position;
-        this.size = 30;
+        this.size = 80;
         this.damageCaused = 30;
         this.heading = 0;
         this.velocity = Vector2.vector(0,5);

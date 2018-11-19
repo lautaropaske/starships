@@ -1,6 +1,7 @@
 package starship.view;
 
 import processing.core.PGraphics;
+import processing.core.PImage;
 
 /**
  * Represents borders in the screen
@@ -18,6 +19,7 @@ public class Border implements Drawable{
     @Override
     public void drawSelf(PGraphics p) {
         p.pushMatrix();
+
         p.fill(0);
         p.rect(0, 0, screenX, (screenX/25f)); // Top
         p.rect(screenX-(screenX/25f), 0, (screenX/25f), screenY); // Right

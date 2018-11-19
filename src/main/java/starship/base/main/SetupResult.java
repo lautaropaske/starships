@@ -1,5 +1,6 @@
 package starship.base.main;
 
+import processing.core.PImage;
 import starship.controller.ShipCommands;
 
 import java.util.HashSet;
@@ -7,6 +8,7 @@ import java.util.Set;
 
 public class SetupResult {
     private Set<ShipCommands> shipCommands;
+    private PImage background;
 
     SetupResult(){
         this.shipCommands = new HashSet<>();
@@ -20,4 +22,10 @@ public class SetupResult {
         return shipCommands;
     }
 
+    public void setBackground(PImage image){
+        this.background = image;
+    }
+    public PImage getBackground() {
+        return background;
+    }
 }

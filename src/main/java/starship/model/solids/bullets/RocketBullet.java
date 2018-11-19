@@ -9,7 +9,7 @@ public class RocketBullet extends Bullet {
     public RocketBullet(){
         this.hp = 6;
         this.velocity = Vector2.vector(0,1);
-        this.size = 10;
+        this.size = 30;
         this.damageCaused = 500;
         this.shape = new Rectangle(0, 0, size, size*2);
     }

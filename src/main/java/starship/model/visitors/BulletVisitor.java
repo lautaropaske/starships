@@ -15,15 +15,17 @@ public class BulletVisitor implements Visitor {
     @Override
     public void visit(Ship ship) {
         if(!bullet.getPlayer().equals(ship.getOwner())) {
-            if(ship.getHp() - bullet.getDamageCaused() <= 0) bullet.getPlayer().scored(1000);
+            if(ship.getHp() - bullet.getDamageCaused() <= 0) {
+                bullet.getPlayer().scored(1000);
+                ship.getOwner().lostLife();
+            }
             ship.damage(bullet.getDamageCaused());
-            if(ship.getHp() <= 0) ship.getOwner().lostLife();
         }
     }
 
     @Override
     public void visit(Asteroid asteroid) {
-        asteroid.damage(bullet.getSize()*1000);
+        asteroid.damage(bullet.getSize()*10);
         if(asteroid.getHp() <= 0) bullet.getPlayer().scored(asteroid.getSize());
     }
 
