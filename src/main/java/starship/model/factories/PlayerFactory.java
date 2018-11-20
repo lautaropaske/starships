@@ -41,8 +41,8 @@ public class PlayerFactory {
             coordinate[1] = (playerNumber-1) * drawSpaceY;
         }
 
-        coordinate[0] += Math.round(om.getScreenX()/25f); // Border size
-        coordinate[1] += Math.round(om.getScreenX()/25f); // Border size
+        coordinate[0] += Math.round(om.getScreenX()/20f); // Border size
+        coordinate[1] += Math.round(om.getScreenX()/20f); // Border size
         return coordinate;
     }
 }

@@ -3,9 +3,13 @@ package starship.base.main;
 import processing.core.PGraphics;
 import starship.base.collision.CollisionManager;
 import starship.base.vector.Vector2;
+import starship.controller.ShipController;
 import starship.model.solids.Solid;
 import starship.view.Drawable;
 import starship.view.SolidG;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ObjectManager {
     private CollisionManager cm;

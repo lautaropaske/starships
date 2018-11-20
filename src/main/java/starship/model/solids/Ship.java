@@ -36,7 +36,7 @@ public class Ship extends Solid{
     }
 
     public void fireGun(){
-        this.guns.peek().fireGun(owner, position, this.heading);
+        if(hp > 0) this.guns.peek().fireGun(owner, position, this.heading);
     }
 
     public void changeGun(){
@@ -45,12 +45,12 @@ public class Ship extends Solid{
 
     @Override
     public void collisionedWith(Solid collisionable) {
-        collisionable.accept(this.visitor);
+        if(hp > 0) collisionable.accept(this.visitor);
     }
 
     @Override
     public void accept(Visitor visitor) {
-        visitor.visit(this);
+        if(hp > 0) visitor.visit(this);
     }
 
     @Override
