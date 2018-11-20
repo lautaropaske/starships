@@ -23,8 +23,8 @@ public class CustomGameFramework implements GameFramework {
     private PImage background;
 
     public CustomGameFramework(){
-        this.screenX = 1000;
-        this.screenY = 800;
+        this.screenX = 1400;
+        this.screenY = 1000;
         this.om = new ObjectManager(new CollisionManager(), new GraphicManager(), this.screenX, this.screenY);
         this.spawnAsteroidsClock = 1000f;
     }
@@ -35,8 +35,6 @@ public class CustomGameFramework implements GameFramework {
 
         windowsSettings
             .setSize(this.screenX, this.screenY);
-
-        //TODO Make an initial input controller to check for name input and set game configuration previous to initialization of a match
 
         Set<String> names = new HashSet<>();
         names.add("Player1");
@@ -51,8 +49,6 @@ public class CustomGameFramework implements GameFramework {
 
     @Override
     public void draw(PGraphics graphics, float timeSinceLastDraw, Set<Integer> keySet) {
-        // TODO SHIPS ARE NOT DYING
-        // TODO LIVES SYSTEM NOT WORKING PROPERLY
         graphics.background(background);
 
         if(spawnAsteroidsClock >= 1500f){

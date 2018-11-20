@@ -66,7 +66,7 @@ public class Game {
     }
 
     public void spawnAsteroids(){
-        asteroidFactory.spawn(new Random().nextInt(2));
+        asteroidFactory.spawn(new Random().nextInt(4));
     }
 
     private ShipCommands createShipCommand(Ship ship, int[] keys){

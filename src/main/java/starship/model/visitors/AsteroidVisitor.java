@@ -14,6 +14,9 @@ public class AsteroidVisitor implements Visitor {
 
     @Override
     public void visit(Ship ship) {
+        if(ship.getHp() - asteroid.getDamageCaused() <= 0) {
+            ship.getOwner().lostLife();
+        }
         ship.damage(asteroid.getDamageCaused());
     }
 

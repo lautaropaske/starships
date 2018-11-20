@@ -26,18 +26,15 @@ public class AsteroidFactory extends SolidFactory {
      */
     public void spawn(int amount) {
         for(; amount >= 0; amount-- ){
-            // TODO FIX SPAWN COORD, make always from 'outside' the border
             Random r = new Random();
-            int boundX = screenX/10;
-            int boundY = screenY/10;
+            int boundX = Math.round(screenX/20f);
+            int boundY = Math.round(screenY/20f);
 
-            float spawnX = -r.nextInt(boundX);
-            float spawnY = -r.nextInt(boundY);
+            float spawnX = r.nextInt(boundX);
+            float spawnY = r.nextInt(boundY);
 
-            if(r.nextBoolean()){
-                spawnX *= -20;
-                spawnY *= -20;
-            }
+            if(r.nextBoolean()) spawnX = screenX - spawnX;
+            if(r.nextBoolean()) spawnY = screenY - spawnY;
 
             // Build asteroid
             String pairID = UUID.randomUUID().toString();

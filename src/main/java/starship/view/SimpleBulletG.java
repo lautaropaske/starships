@@ -15,19 +15,18 @@ public class SimpleBulletG extends SolidG{
 
     @Override
     public void drawSelf(PGraphics p) {
-        this.image.resize(lastState.getSize(),lastState.getSize());
-
         p.pushMatrix();
         p.shapeMode(PConstants.CENTER);
         p.translate(lastState.getPosition().getX(), lastState.getPosition().getY());
         p.rotate(lastState.getHeading());
 
-        p.image(image,0,0, lastState.getSize(), lastState.getSize());
+        p.fill(255);
+        p.ellipse(0,0,lastState.getSize(), lastState.getSize());
         p.popMatrix();
     }
 
     @Override
     public void update(Observable<Solid> observable) {
-        super.update((Solid) observable);
+        super.update(observable);
     }
 }
